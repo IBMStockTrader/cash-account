@@ -1,0 +1,187 @@
+openapi: 3.0.1
+info:
+  title: OpenAPI definition
+  version: v0
+servers:
+- url: http://a44cb7f64efaa48f1bcda88cb5fd6214-1026766487.us-east-2.elb.amazonaws.com:8080
+  description: Generated server url
+paths:
+  /cash-account/{owner}:
+    get:
+      tags:
+      - cash-account-controller
+      operationId: GetCashAccountByOwner
+      parameters:
+      - name: owner
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Gets cash account
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CashAccount'
+        "404":
+          description: Cash account not found
+    put:
+      tags:
+      - cash-account-controller
+      operationId: updateCashAccount
+      parameters:
+      - name: owner
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CashAccount'
+        required: true
+      responses:
+        "200":
+          description: Updates cash account
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CashAccount'
+        "500":
+          description: Internal error
+        "404":
+          description: Cash account not found
+        "201":
+          description: Conflicting account
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CashAccount'
+    post:
+      tags:
+      - cash-account-controller
+      operationId: createCashAccount
+      parameters:
+      - name: owner
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CashAccount'
+        required: true
+      responses:
+        "201":
+          description: Creates cash account
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CashAccount'
+        "500":
+          description: Internal error
+        "409":
+          description: Conflicting account
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CashAccount'
+    delete:
+      tags:
+      - cash-account-controller
+      operationId: deleteCashAccount
+      parameters:
+      - name: owner
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        "200":
+          description: Deleted cash account
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CashAccount'
+        "500":
+          description: Internal error
+        "404":
+          description: Cash account not found
+  /cash-account/{owner}/debit:
+    put:
+      tags:
+      - cash-account-controller
+      operationId: debitBalance
+      parameters:
+      - name: owner
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: amount
+        in: query
+        required: true
+        schema:
+          type: number
+          format: double
+      responses:
+        "400":
+          description: Debiting from negative cash account
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CashAccount'
+        "500":
+          description: Internal error
+        "200":
+          description: Debited from cash account
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CashAccount'
+        "404":
+          description: Cash account not found
+  /cash-account/{owner}/credit:
+    put:
+      tags:
+      - cash-account-controller
+      operationId: creditBalance
+      parameters:
+      - name: owner
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: amount
+        in: query
+        required: true
+        schema:
+          type: number
+          format: double
+      responses:
+        "200":
+          description: Credited from cash account
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CashAccount'
+        "500":
+          description: Internal error
+        "404":
+          description: Cash account not found
+components:
+  schemas:
+    CashAccount:
+      type: object
+      properties:
+        owner:
+          type: string
+        balance:
+          type: number
+          format: double
+        currency:
+          type: string
