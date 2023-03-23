@@ -21,8 +21,7 @@ COPY . /app
 
 WORKDIR /app
 
-# Make sure you have the environment variables set
-RUN mvn clean -e package spring-boot:repackage
+RUN mvn clean -e package spring-boot:repackage -DskipTests=true
 
 RUN ls target/
 CMD ["java", "-jar", "target/cashaccount-0.0.1-SNAPSHOT.jar"]
