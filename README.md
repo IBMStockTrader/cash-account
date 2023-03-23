@@ -1,5 +1,5 @@
 # Cash Account
----
+
 Kyndryl Stocktrader Cash Account Microservice prototype made using Spring. This service is to manage an account for a portfolio. This service uses a Postgres database using JDBC to keep track of accounts and a Redis cache for storing currency rates.
 
 The following operations are available:
@@ -11,3 +11,5 @@ The following operations are available:
 - `PUT /cash-account/debit/{owner}/{debitAmount}` - subtracts money (USD) from a specific owner's account
 - `PUT /cash-account/credit/{owner}/{creditAmount}` - adds money (USD) from a specific owner's account
 - `DELETE /cash-account/{owner}` - deletes the account of a specific owner
+
+This project is developed by [Celina Chen](https://github.com/CC9759) with the help of the Kyndryl Cloud Journey Optimization team!
