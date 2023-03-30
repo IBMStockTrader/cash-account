@@ -23,3 +23,5 @@ The application expects the following environment variables.
 | `JDBC_PASSWORD`  | Password for the JDBC connection |
 | `REDIS_URL`  | URL for the Redis Server |
 | `CURRENCY_API_URL`  | URL for the API |
+
+The application also expects a preexisting database with the provided [createTables.ddl](src/main/resources/createTables.ddl) statements.

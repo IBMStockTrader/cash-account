@@ -14,5 +14,5 @@
 
 --   Run this via "db2 -tf createTables.ddl" on DB2, or via psql on PostgreSQL
 
-CREATE TABLE CashAccount(owner VARCHAR(32) NOT NULL, balance DOUBLE PRECISION, currency VARCHAR(8), PRIMARY KEY(owner));
+CREATE TABLE cashaccount(owner VARCHAR(32) NOT NULL, balance DOUBLE PRECISION, currency VARCHAR(8), PRIMARY KEY(owner));
 ALTER TABLE cashaccount ADD CONSTRAINT allowed_currencies CHECK (currency IN ('AUD', 'BGN', 'BRL', 'CAD', 'CHF', 'CNY', 'CZK', 'DKK', 'EUR', 'GBP', 'HKD', 'HUF', 'IDR', 'ILS', 'INR', 'ISK', 'JPY', 'KRW', 'MXN', 'MYR', 'NOK', 'NZD', 'PHP', 'PLN', 'RON', 'SEK', 'SGD', 'THB', 'TRY', 'USD', 'ZAR'));
