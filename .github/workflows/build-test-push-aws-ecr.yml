@@ -28,7 +28,7 @@ name: Build, Push to Amazon ECR, Gitops
 on:
   push:
     branches:
-      - master 
+      - main 
     paths-ignore:
     - '.github/**' 
   release:
