@@ -26,6 +26,8 @@ paths:
                 $ref: '#/components/schemas/CashAccount'
         "404":
           description: Cash account not found
+        "500":
+          description: Internal error
     put:
       tags:
       - cash-account-controller
@@ -49,16 +51,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CashAccount'
-        "500":
-          description: Internal error
         "404":
           description: Cash account not found
-        "201":
-          description: Conflicting account
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CashAccount'
+        "500":
+          description: Internal error
     post:
       tags:
       - cash-account-controller
@@ -82,14 +78,14 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CashAccount'
-        "500":
-          description: Internal error
         "409":
           description: Conflicting account
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/CashAccount'
+        "500":
+          description: Internal error
     delete:
       tags:
       - cash-account-controller
@@ -107,10 +103,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CashAccount'
-        "500":
-          description: Internal error
         "404":
           description: Cash account not found
+        "500":
+          description: Internal error
   /cash-account/{owner}/debit:
     put:
       tags:
@@ -129,22 +125,22 @@ paths:
           type: number
           format: double
       responses:
-        "400":
-          description: Debiting from negative cash account
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/CashAccount'
-        "500":
-          description: Internal error
         "200":
           description: Debited from cash account
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/CashAccount'
+        "400":
+          description: Debiting from negative cash account
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CashAccount'
         "404":
           description: Cash account not found
+        "500":
+          description: Internal error
   /cash-account/{owner}/credit:
     put:
       tags:
@@ -169,10 +165,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CashAccount'
-        "500":
-          description: Internal error
         "404":
           description: Cash account not found
+        "500":
+          description: Internal error
 components:
   schemas:
     CashAccount:
