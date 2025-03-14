@@ -1,4 +1,4 @@
-#        Copyright 2023 Kyndryl, All Rights Reserved
+#        Copyright 2023-2025 Kyndryl, All Rights Reserved
 
 #    Licensed under the Apache License, Version 2.0 (the "License");
 #    you may not use this file except in compliance with the License.
@@ -13,7 +13,7 @@
 #    limitations under the License.
 
 # FROM maven:3.8.7-openjdk-18-slim@sha256:de5262140ec5c7ddb053f11ff5569184d8988947d771d3beca98c0400fbd3f19
-FROM maven:3.8.7-openjdk-18-slim
+FROM maven:3.9.9-eclipse-temurin-21
 
 RUN mkdir /app
 
@@ -24,4 +24,4 @@ WORKDIR /app
 RUN mvn clean -e package spring-boot:repackage -DskipTests=true
 
 RUN ls target/
-CMD ["java", "-jar", "target/cashaccount-0.0.1-SNAPSHOT.jar"]
+CMD ["java", "-jar", "target/cashaccount-1.0.0.jar"]
