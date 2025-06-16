@@ -1,0 +1,306 @@
+{
+  "openapi" : "3.1.0",
+  "components" : {
+    "schemas" : {
+      "CashAccount" : {
+        "type" : "object",
+        "properties" : {
+          "owner" : {
+            "type" : "string"
+          },
+          "balance" : {
+            "type" : "number",
+            "format" : "double"
+          },
+          "currency" : {
+            "type" : "string"
+          }
+        }
+      }
+    }
+  },
+  "paths" : {
+    "/${springdoc.api-docs.path}" : {
+      "get" : {
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "string",
+                  "format" : "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/${springdoc.api-docs.path}.yaml" : {
+      "get" : {
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/vnd.oai.openapi" : {
+                "schema" : {
+                  "type" : "string",
+                  "format" : "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/${springdoc.api-docs.path}.yaml/{group}" : {
+      "get" : {
+        "parameters" : [ {
+          "name" : "group",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/vnd.oai.openapi" : {
+                "schema" : {
+                  "type" : "string",
+                  "format" : "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/${springdoc.api-docs.path}/swagger-config" : {
+      "get" : {
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "object",
+                  "additionalProperties" : { }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/${springdoc.api-docs.path}/{group}" : {
+      "get" : {
+        "parameters" : [ {
+          "name" : "group",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "string",
+                  "format" : "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/cash-account/{owner}" : {
+      "get" : {
+        "parameters" : [ {
+          "name" : "owner",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "*/*" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/CashAccount"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "parameters" : [ {
+          "name" : "owner",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "*/*" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/CashAccount"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete" : {
+        "parameters" : [ {
+          "name" : "owner",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "*/*" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/CashAccount"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put" : {
+        "parameters" : [ {
+          "name" : "owner",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "*/*" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/CashAccount"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/cash-account/{owner}/credit" : {
+      "put" : {
+        "parameters" : [ {
+          "name" : "owner",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "amount",
+          "in" : "query",
+          "schema" : {
+            "type" : "number",
+            "format" : "double"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "*/*" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/CashAccount"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/cash-account/{owner}/currency" : {
+      "get" : {
+        "parameters" : [ {
+          "name" : "owner",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "*/*" : {
+                "schema" : {
+                  "type" : "number",
+                  "format" : "double"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/cash-account/{owner}/debit" : {
+      "put" : {
+        "parameters" : [ {
+          "name" : "owner",
+          "in" : "path",
+          "required" : true,
+          "schema" : {
+            "type" : "string"
+          }
+        }, {
+          "name" : "amount",
+          "in" : "query",
+          "schema" : {
+            "type" : "number",
+            "format" : "double"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "content" : {
+              "*/*" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/CashAccount"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "info" : {
+    "title" : "Generated API",
+    "version" : "1.0"
+  }
+}
