@@ -18,7 +18,7 @@ metadata:
   name: cash-account-api
   tags:
     - java
-    - openliberty
+    - springboot
 ---
 apiVersion: backstage.io/v1alpha1
 kind: Component
@@ -43,4 +43,4 @@ metadata:
     github.com/project-slug: IBMStockTrader/cash-account/
   tags:
     - java
-    - openliberty
+    - springboot
