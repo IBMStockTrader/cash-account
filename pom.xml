@@ -81,6 +81,21 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<!-- generate OpenAPI documentation -->
+			<plugin>
+				<artifactId>smallrye-open-api-maven-plugin</artifactId>
+				<groupId>io.smallrye</groupId>
+				<configuration>
+					<outputDirectory>${project.basedir}/src/main/generated/openapi</outputDirectory>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>generate-schema</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 
