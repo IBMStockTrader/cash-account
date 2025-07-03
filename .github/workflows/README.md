@@ -2,7 +2,7 @@
 
 Workflows are used to build and deploy the `cash-account` service.
 
-This file describes the workflows that are used to compile the app, build the Docker image, and publish it to either Azure Container Registry (ACR) or Amazon ECR, and update the GitOps repository for deployment.
+This file describes the workflows that are used to compile the app, build the Docker image, scan it for vulnerabilities, and publish it to either Azure Container Registry (ACR) or Amazon ECR, and update the GitOps repository for deployment.
 
 Workflows are defined in the following files:
 - [build-test-push-azure-acr.yml](build-test-push-azure-acr.yml)
@@ -42,6 +42,7 @@ GITOPS_USERNAME - Your GitHub username
 ## Azure Workflow
 This workflow:
 - Builds the application using Maven
+- **Scans the built Docker image for vulnerabilities using Trivy before pushing**
 - Pushes the Docker image to Azure Container Registry (ACR)
 - Updates the GitOps repository with the new image tag for AKS deployment
 
